@@ -1,15 +1,28 @@
 {
   "name": "spacetrack",
   "version": "0.0.1",
-  "description": "Space-Track API",
-  "author": "Ben Elsen",
-  "license": "MIT",
-  "main": "index.js",
-  "scripts": {
-    "test": ""
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "author": {
+    "name": "Ben Elsen",
+    "url": "http://benelsen.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/benelsen/spacetrack.git"
-  }
+    "url": "https://github.com/benelsen/spacetrack.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "smash": "latest",
+    "uglify-js": "latest",
+    "jshint": "latest",
+    "mocha": "latest",
+    "should": "latest"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "license": "MIT"
 }
