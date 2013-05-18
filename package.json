@@ -12,7 +12,9 @@
     "type": "git",
     "url": "https://github.com/benelsen/spacetrack.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "request": "latest"
+  },
   "devDependencies": {
     "smash": "latest",
     "uglify-js": "latest",
@@ -20,7 +22,7 @@
     "mocha": "latest",
     "should": "latest"
   },
-  "main": "index.js",
+  "main": "src/spacetrack",
   "scripts": {
     "test": "make test"
   },
