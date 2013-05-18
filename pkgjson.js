@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var spacetrack = require('./index');
+var spacetrack = require('./src/spacetrack');
 
 var common = {
   name: 'spacetrack',
@@ -25,7 +25,9 @@ var packagejson = {
     type: 'git',
     url: 'https://github.com/benelsen/spacetrack.git'
   },
-  dependencies: {},
+  dependencies: {
+    'request': 'latest'
+  },
   devDependencies: {
     'smash': 'latest',
     'uglify-js': 'latest',
@@ -33,26 +35,26 @@ var packagejson = {
     'mocha': 'latest',
     'should': 'latest'
   },
-  main: 'index.js',
+  main: 'src/spacetrack',
   scripts: {
     'test': 'make test'
   },
   license: common.license
 };
 
-var componentjson = {
-  name: common.name,
-  repo: 'benelsen/spacetrack',
-  description: common.description,
-  version: common.version,
-  keywords: common.keywords,
-  dependencies: {},
-  development: {},
-  scripts: [
-    'spacetrack.js'
-  ],
-  license: common.license
-};
+// var componentjson = {
+//   name: common.name,
+//   repo: 'benelsen/spacetrack',
+//   description: common.description,
+//   version: common.version,
+//   keywords: common.keywords,
+//   dependencies: {},
+//   development: {},
+//   scripts: [
+//     'spacetrack.js'
+//   ],
+//   license: common.license
+// };
 
 fs.writeFile('package.json', JSON.stringify(packagejson, null, '  '), 'utf8');
-fs.writeFile('component.json', JSON.stringify(componentjson, null, '  '), 'utf8');
+// fs.writeFile('component.json', JSON.stringify(componentjson, null, '  '), 'utf8');
