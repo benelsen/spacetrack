@@ -1,8 +1,14 @@
 {
   "name": "spacetrack",
   "version": "0.0.1",
-  "description": "",
-  "keywords": [],
+  "description": "Simple node.js library for the Space-Track.org REST API.",
+  "keywords": [
+    "spacetrack",
+    "JFCC",
+    "JSpOC",
+    "satellite",
+    "orbit"
+  ],
   "homepage": "",
   "author": {
     "name": "Ben Elsen",

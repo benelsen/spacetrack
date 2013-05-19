@@ -5,8 +5,9 @@ var spacetrack = require('./src/spacetrack');
 var common = {
   name: 'spacetrack',
   version: spacetrack.version,
-  description: '',
+  description: 'Simple node.js library for the Space-Track.org REST API.',
   keywords: [
+    'spacetrack', 'JFCC', 'JSpOC', 'satellite', 'orbit'
   ],
   license: 'MIT'
 };
