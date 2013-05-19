@@ -10,11 +10,16 @@
       throw new Error('username or password undefined');
     }
 
+    this.loggedIn = false;
     this.cookieJar = request.jar();
 
-    this.login(this.options.username, this.options.password, function(err) {
+    var _this = this;
+
+    this.login(function(err) {
       if ( err )
         throw err;
+      else
+        _this.loggedIn = true;
     });
 
   };

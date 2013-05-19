@@ -5,14 +5,17 @@
 
   var request = require('request');
 
-  var login = function (username, password, callback) {
+  var login = function (callback) {
 
     var jar = this.cookieJar;
 
     request.post(
       base.baseURL + '/ajaxauth/login',
       {
-        form: { identity: username, password: password },
+        form: {
+          identity: this.options.username,
+          password: this.options.password
+        },
         jar: jar
       },
       function(err, res, body) {
