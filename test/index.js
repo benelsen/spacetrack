@@ -1,10 +1,13 @@
 /*global describe, it */
+'use strict';
+
 var should = require('should');
+
+// Test
 
 var SpaceTrack = require('./../src/spacetrack');
 
 describe('SpaceTrack', function() {
-  'use strict';
 
   it('should exist', function() {
     should.exist(SpaceTrack);

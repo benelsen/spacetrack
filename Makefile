@@ -6,8 +6,8 @@ all: pkgjson jshint test
 deps:
 	npm install
 
-test:
-	node_modules/.bin/mocha --recursive --reporter spec --require should
+test: FORCE
+	npm test
 
 jshint:
 	node_modules/.bin/jshint --show-non-errors src/
@@ -15,3 +15,5 @@ jshint:
 
 pkgjson:
 	node pkgjson.js
+
+FORCE:
