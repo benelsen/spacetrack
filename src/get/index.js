@@ -19,12 +19,15 @@
     options.format = 'json';
 
     // controller
-    if ( !options.controller || ['basicspacedata', 'expandedspacedata'].indexOf(options.controller) === -1 )
+    if ( !options.controller || common.support.controller.indexOf(options.controller) === -1 )
       options.controller = 'basicspacedata';
 
     // action
-    if ( !options.action || ['query', 'modeldef'].indexOf(options.action) === -1 )
+    if ( !options.action || common.support.actions.indexOf(options.action) === -1 )
       options.action = 'query';
+
+    if ( common.support.types.indexOf(options.type) === -1 )
+      throw new Error('request type not supported');
 
     var url = common.baseURL +
               '/' + options.controller +
@@ -38,7 +41,8 @@
         options.query = [options.query];
 
       options.query.forEach(function(q) {
-        url += '/' + q.field + '/' + q.condition;
+        if ( common.support.fields[options.type].indexOf(q.field) > -1 )
+          url += '/' + q.field + '/' + q.condition;
       });
     }
 
@@ -47,6 +51,16 @@
     if ( options.predicates && options.predicates.length > 0 ) {
       if ( !util.isArray(options.predicates) )
         options.predicates = [options.predicates];
+
+      options.predicates = options.predicates.filter(function(p) {
+
+        var isValid = common.support.fields[options.type].indexOf(p) > -1;
+        if ( !isValid )
+          throw new Error(p + ' is not a valid predicate for ' + options.type);
+
+        return isValid;
+      });
+
       url += '/predicates/' + options.predicates.join();
     }
 
@@ -62,6 +76,16 @@
     if ( options.orderby && options.orderby.length > 0 ) {
       if ( !util.isArray(options.orderby) )
         options.orderby = [options.orderby];
+
+      options.orderby = options.orderby.filter(function(p) {
+        var predicate = p.slice( ~~( p[0] === '+' || p[0] === '-' ) );
+
+        var isValid = common.support.fields[options.type].indexOf(predicate) > -1;
+        if ( !isValid )
+          throw new Error(predicate + ' is not a valid predicate for ' + options.type);
+
+        return isValid;
+      });
 
       url += '/orderby/' + options.orderby.map(function(o) {
         return o.slice( ~~( o[0] === '+' || o[0] === '-' ) ) +' '+ (o[0] === '-' ? 'desc' : 'asc');
@@ -90,7 +114,7 @@
       url += '/emptyresult/show';
 
     // format
-    if ( ['json', 'xml', 'html', 'csv', 'tle', '3le'].indexOf(options.format) > -1 )
+    if ( common.support.formats.indexOf(options.format) > -1 )
       url += '/format/' + options.format;
 
     return url;
