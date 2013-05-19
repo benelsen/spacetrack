@@ -1,7 +1,7 @@
 
-all: pkgjson
+all: pkgjson jshint test
 
-.PHONY: all jshint test
+.PHONY: all
 
 deps:
 	npm install
