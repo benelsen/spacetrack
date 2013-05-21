@@ -16,8 +16,6 @@ if ( process.env.ST_USER && process.env.ST_PASS &&
 
   var config = JSON.parse( fs.readFileSync(__dirname + '/config.json') );
 
-  console.log();
-
   username = config.username;
   password = config.password;
 
