@@ -34,7 +34,7 @@ options = {
   // launch_site, satcat_change, satcat_debut, decay, tip, csm
   
   query: [  // optional, but highly recommended
-    {field: 'NORAD_CAT_ID', condition: '25544'} // i.e.
+    {field: 'NORAD_CAT_ID', condition: '25544'} // e.g. (see the API documentation)
   ],
   
   predicates: [  // optional
