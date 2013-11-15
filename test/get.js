@@ -39,7 +39,7 @@ describe('SpaceTrack#get', function() {
   });
 
   it('should be a function', function() {
-    spacetrack.get.should.be.a.Function;
+    spacetrack.get.should.be.a.instanceOf(Function);
   });
 
 });

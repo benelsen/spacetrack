@@ -26,12 +26,11 @@
     "uglify-js": "latest",
     "jshint": "latest",
     "mocha": "latest",
-    "should": "latest",
-    "complexity-report": "latest"
+    "should": "latest"
   },
   "main": "src/spacetrack",
   "scripts": {
-    "test": "make jshint complex test"
+    "test": "node_modules/.bin/mocha --recursive --reporter spec --require should"
   },
   "license": "MIT"
 }
