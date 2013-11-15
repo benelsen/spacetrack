@@ -1,11 +1,14 @@
 (function(){
   'use strict';
 
-  var request = require('request');
+  var request = require('request'),
+      Q = require('q');
 
   var buildURL = require('./buildURL');
 
-  var get = function (options, callback) {
+  var get = function (options) {
+
+    var deferred = Q.defer();
 
     var url = buildURL(options);
 
@@ -15,30 +18,32 @@
       jar: this.cookieJar
     }, function(err, res, body) {
 
-      if ( err ) return callback(err, null);
+      if ( err ) return deferred.reject(err);
 
       if ( res.statusCode === 200 ) {
         var data = JSON.parse(body);
-        return callback(null, data);
+        return deferred.resolve(data);
       }
 
       if ( res.statusCode === 401 ) {
         _this.loggedIn = false;
 
-        return _this.login(function(err) {
-          if ( err ) {
-            throw err;
-          } else {
+        return _this.login()
+          .then(function() {
             _this.loggedIn = true;
-            _this.get( options, callback );
-          }
-
-        });
+            deferred.resolve( _this.get( options ) );
+          })
+          .fail(function(err) {
+            deferred.reject(err);
+          });
       }
 
-      return callback(new Error('unexpected error'), null);
+      return deferred.reject(new Error('unexpected error'));
 
     });
+
+    return deferred.promise;
+
   };
 
   module.exports = get;

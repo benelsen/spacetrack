@@ -15,15 +15,13 @@
 
     var _this = this;
 
-    this.login(function(err) {
-
-      if ( err ) {
-        throw err;
-      } else {
+    this.login()
+      .then(function() {
         _this.loggedIn = true;
-      }
-
-    });
+      })
+      .fail(function(err) {
+        throw err;
+      });
 
   };
 
