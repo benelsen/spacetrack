@@ -14,7 +14,7 @@ describe('SpaceTrack', function() {
   });
 
   it('should be a function', function() {
-    SpaceTrack.should.be.a('function');
+    SpaceTrack.should.be.a.Function;
   });
 
 });
