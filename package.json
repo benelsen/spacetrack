@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "request": "latest",
-    "q": "~0.9.7"
+    "q": "latest"
   },
   "devDependencies": {
     "smash": "latest",
