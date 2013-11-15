@@ -15,8 +15,7 @@
       jar: this.cookieJar
     }, function(err, res, body) {
 
-      if ( err )
-        return callback(err, null);
+      if ( err ) return callback(err, null);
 
       if ( res.statusCode === 200 ) {
         var data = JSON.parse(body);
@@ -27,9 +26,9 @@
         _this.loggedIn = false;
 
         return _this.login(function(err) {
-          if ( err )
+          if ( err ) {
             throw err;
-          else {
+          } else {
             _this.loggedIn = true;
             _this.get( options, callback );
           }

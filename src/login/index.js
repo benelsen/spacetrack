@@ -20,11 +20,13 @@
       },
       function(err, res, body) {
 
-        if ( err )
+        if ( err ) {
           return callback(err);
+        }
 
-        if ( res.statusCode !== 200 )
+        if ( res.statusCode !== 200 ){
           return callback(new Error('Error ' + res.statusCode));
+        }
 
         if ( body ) {
           var response;
@@ -35,13 +37,15 @@
             return callback(e);
           }
 
-          if ( response.Login === 'Failed' )
+          if ( response.Login === 'Failed' ) {
             return callback(new Error('Login Failed'));
+          }
 
         }
 
-        if ( jar.cookies.length === 0 )
+        if ( jar.cookies.length === 0 ) {
           return callback(new Error('No Cookies'));
+        }
 
         return callback(null);
       }

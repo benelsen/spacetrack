@@ -16,10 +16,13 @@
     var _this = this;
 
     this.login(function(err) {
-      if ( err )
+
+      if ( err ) {
         throw err;
-      else
+      } else {
         _this.loggedIn = true;
+      }
+
     });
 
   };
