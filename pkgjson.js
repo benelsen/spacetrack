@@ -34,11 +34,12 @@ var packagejson = {
     'uglify-js': 'latest',
     'jshint': 'latest',
     'mocha': 'latest',
+    'complexity-report': 'latest',
     'should': 'latest'
   },
   main: 'src/spacetrack',
   scripts: {
-    'test': 'node_modules/.bin/mocha --recursive --reporter spec --require should'
+    'test': 'make jshint complex test'
   },
   license: common.license
 };
