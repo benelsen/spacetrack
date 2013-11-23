@@ -3,9 +3,12 @@
 
   var base = require('../common');
 
-  var request = require('request');
+  var request = require('request'),
+      Q = require('q');
 
-  var login = function (callback) {
+  var login = function () {
+
+    var deferred = Q.defer();
 
     var jar = this.cookieJar;
 
@@ -21,11 +24,11 @@
       function(err, res, body) {
 
         if ( err ) {
-          return callback(err);
+          return deferred.reject(err);
         }
 
         if ( res.statusCode !== 200 ){
-          return callback(new Error('Error ' + res.statusCode));
+          return deferred.reject(new Error('Error ' + res.statusCode));
         }
 
         if ( body ) {
@@ -34,22 +37,24 @@
           try {
             response = JSON.parse(body);
           } catch (e) {
-            return callback(e);
+            return deferred.reject(e);
           }
 
           if ( response.Login === 'Failed' ) {
-            return callback(new Error('Login Failed'));
+            return deferred.reject(new Error('Login Failed'));
           }
 
         }
 
         if ( jar.cookies.length === 0 ) {
-          return callback(new Error('No Cookies'));
+          return deferred.reject(new Error('No Cookies'));
         }
 
-        return callback(null);
+        return deferred.resolve();
       }
     );
+
+    return deferred.promise;
 
   };
 

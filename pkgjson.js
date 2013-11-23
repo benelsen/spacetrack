@@ -27,7 +27,8 @@ var packagejson = {
     url: 'https://github.com/benelsen/spacetrack.git'
   },
   dependencies: {
-    'request': 'latest'
+    'request': 'latest',
+    'q': 'latest'
   },
   devDependencies: {
     'smash': 'latest',

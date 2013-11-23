@@ -19,7 +19,9 @@
     "url": "https://github.com/benelsen/spacetrack.git"
   },
   "dependencies": {
-    "request": "latest"
+    "request": "latest",
+    "q": "latest",
+    "lodash": "latest"
   },
   "devDependencies": {
     "smash": "latest",
