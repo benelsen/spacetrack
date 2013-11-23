@@ -25,7 +25,7 @@
 
   };
 
-  SpaceTrack.version = '0.0.1';
+  SpaceTrack.version = '0.1.0';
 
   SpaceTrack.prototype.login = require('./login');
 
