@@ -1,6 +1,6 @@
 {
   "name": "spacetrack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple node.js library for the Space-Track.org REST API.",
   "keywords": [
     "spacetrack",
@@ -19,9 +19,9 @@
     "url": "https://github.com/benelsen/spacetrack.git"
   },
   "dependencies": {
-    "request": "latest",
-    "q": "latest",
-    "lodash": "latest"
+    "request": "~2.27.0",
+    "q": "~0.9.7",
+    "lodash": "~2.3.0"
   },
   "devDependencies": {
     "smash": "latest",
