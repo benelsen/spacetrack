@@ -1,0 +1,39 @@
+{
+  "name": "spacetrack",
+  "version": "0.1.0",
+  "description": "Simple node.js library for the Space-Track.org REST API.",
+  "keywords": [
+    "spacetrack",
+    "JFCC",
+    "JSpOC",
+    "satellite",
+    "orbit"
+  ],
+  "homepage": "",
+  "author": {
+    "name": "Ben Elsen",
+    "url": "http://benelsen.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benelsen/spacetrack.git"
+  },
+  "dependencies": {
+    "request": "~2.27.0",
+    "q": "~0.9.7",
+    "lodash": "~2.3.0"
+  },
+  "devDependencies": {
+    "smash": "latest",
+    "uglify-js": "latest",
+    "jshint": "latest",
+    "mocha": "latest",
+    "complexity-report": "latest",
+    "should": "latest"
+  },
+  "main": "src/spacetrack",
+  "scripts": {
+    "test": "make jshint complex test"
+  },
+  "license": "MIT"
+}
