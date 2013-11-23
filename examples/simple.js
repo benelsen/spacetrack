@@ -1,4 +1,4 @@
-var SpaceTrack = require('spacetrack'),
+var SpaceTrack = require('./../src/spacetrack'),
     util = require('util');
 
 var spacetrack = new SpaceTrack({
@@ -7,28 +7,31 @@ var spacetrack = new SpaceTrack({
 });
 
 spacetrack.get({
-  type: 'tle_latest',
-  query: [
-    {field:'NORAD_CAT_ID', condition: '25544,39166'}
-  ],
-  predicates: [
-    'OBJECT_NAME',
-    'EPOCH',
-    'INCLINATION',
-    'ARG_OF_PERICENTER',
-    'RA_OF_ASC_NODE',
-    'MEAN_ANOMALY',
-    'ECCENTRICITY',
-    'MEAN_MOTION'
-  ],
-  orderby: [
-    '+ORDINAL',
-    '-NORAD_CAT_ID'
-  ],
-  limit: 3
-}, function(err, result) {
-  util.puts( util.inspect(result, {colors: true, depth: null}) );
-});
+    type: 'tle_latest',
+    query: [
+      {field:'NORAD_CAT_ID', condition: '25544,39166'}
+    ],
+    predicates: [
+      'OBJECT_NAME',
+      'EPOCH',
+      'INCLINATION',
+      'ARG_OF_PERICENTER',
+      'RA_OF_ASC_NODE',
+      'MEAN_ANOMALY',
+      'ECCENTRICITY',
+      'MEAN_MOTION'
+    ],
+    orderby: [
+      '-EPOCH'
+    ],
+    limit: 1
+  })
+  .then(function(result) {
+    util.puts( util.inspect(result, {colors: true, depth: null}) );
+  })
+  .fail(function(err) {
+    console.error(err);
+  });
 
 /*
 {

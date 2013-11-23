@@ -4,18 +4,24 @@
   var request = require('request'),
       Q = require('q');
 
-  var buildURL = require('./buildURL');
+  var buildURL = require('./buildURL'),
+      cleanData = require('./../common/cleanData');
 
-  var get = function (options) {
+  var get = function(options) {
+
+    return getRequest(options, this)
+      .then(cleanData);
+
+  };
+
+  var getRequest = function(options, _this) {
 
     var deferred = Q.defer();
 
     var url = buildURL(options);
 
-    var _this = this;
-
     request(url, {
-      jar: this.cookieJar
+      jar: _this.cookieJar
     }, function(err, res, body) {
 
       if ( err ) return deferred.reject(err);
@@ -31,14 +37,14 @@
         return _this.login()
           .then(function() {
             _this.loggedIn = true;
-            deferred.resolve( _this.get( options ) );
+            deferred.resolve( getRequest( options, _this ) );
           })
           .fail(function(err) {
             deferred.reject(err);
           });
       }
 
-      return deferred.reject(new Error('unexpected error'));
+      return deferred.reject( new Error('unexpected error ' + res.statusCode ));
 
     });
 

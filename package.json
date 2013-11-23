@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "request": "latest",
-    "q": "latest"
+    "q": "latest",
+    "lodash": "latest"
   },
   "devDependencies": {
     "smash": "latest",
