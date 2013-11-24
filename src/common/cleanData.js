@@ -61,9 +61,9 @@
       if ( data.hasOwnProperty('ORDINAL') ) clean.ordinal = data['ORDINAL'];
       if ( data.hasOwnProperty('FILE') ) clean.file = data['FILE'];
 
-      if ( data.hasOwnProperty('TLE_LINE0')
-	     && data.hasOwnProperty('TLE_LINE1')
-	     && data.hasOwnProperty('TLE_LINE2') ) {
+      if ( data.hasOwnProperty('TLE_LINE0') &&
+           data.hasOwnProperty('TLE_LINE1') &&
+           data.hasOwnProperty('TLE_LINE2') ) {
         clean.tle = [
           data['TLE_LINE0'],
           data['TLE_LINE1'],
@@ -71,9 +71,9 @@
         ];
       }
 
-      if ( data.hasOwnProperty('USER_DEFINED_TLE_LINE0')
-	     && data.hasOwnProperty('USER_DEFINED_TLE_LINE1')
-	     && data.hasOwnProperty('USER_DEFINED_TLE_LINE2') ) {
+      if ( data.hasOwnProperty('USER_DEFINED_TLE_LINE0') &&
+           data.hasOwnProperty('USER_DEFINED_TLE_LINE1') &&
+           data.hasOwnProperty('USER_DEFINED_TLE_LINE2') ) {
         clean.tle = [
           data['USER_DEFINED_TLE_LINE0'],
           data['USER_DEFINED_TLE_LINE1'],
