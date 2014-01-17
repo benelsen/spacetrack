@@ -46,10 +46,6 @@
 
         }
 
-        if ( jar.cookies.length === 0 ) {
-          return deferred.reject(new Error('No Cookies'));
-        }
-
         return deferred.resolve();
       }
     );
