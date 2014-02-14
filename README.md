@@ -19,10 +19,10 @@ var spacetrack = new SpaceTrack({
 ```
 
 ### Request
-  This will build a request from the provided options and call the callback with the result (and/or error).
+  This will build a request from the provided options and return a promise.
   
 ```javascript
-spacetrack.get(options, function(err, result) {});
+var promise = spacetrack.get(options);
 ```
 ```javascript
 options = {
@@ -92,7 +92,7 @@ spacetrack.get({
     limit: 3
   })
   .then(function(result) {
-    util.puts( util.inspect(result, {colors: true, depth: null}) );
+    console.log( util.inspect(result, {colors: true, depth: null}) );
   })
   .fail(function(err) {
     console.error(err);
