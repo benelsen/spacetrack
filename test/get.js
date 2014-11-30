@@ -1,8 +1,5 @@
-/*global describe, it */
-'use strict';
-
-var should = require('should'),
-    fs = require('fs');
+var test = require('tape');
+var fs = require('fs');
 
 // Credentials
 var username, password;
@@ -14,7 +11,7 @@ if ( process.env.ST_USER && process.env.ST_PASS &&
 
 } else if ( fs.existsSync( __dirname + '/config.json' ) ) {
 
-  var config = JSON.parse( fs.readFileSync(__dirname + '/config.json') );
+  var config = require(__dirname + '/config.json');
 
   username = config.username;
   password = config.password;
@@ -32,15 +29,13 @@ var spacetrack = new SpaceTrack({
   password: password
 });
 
-describe('SpaceTrack#get', function() {
+test('SpaceTrack#get', function(t) {
 
-  it('should exist', function() {
-    should.exist(spacetrack.get);
-  });
+  t.plan(2);
 
-  it('should be a function', function() {
-    spacetrack.get.should.be.a.instanceOf(Function);
-  });
+  t.ok(spacetrack.get);
+
+  t.ok(spacetrack.get instanceof Function);
 
 });
 

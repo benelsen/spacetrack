@@ -1,6 +1,6 @@
 {
   "name": "spacetrack",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Simple node.js library for the Space-Track.org REST API.",
   "keywords": [
     "spacetrack",
@@ -12,28 +12,24 @@
   "homepage": "",
   "author": {
     "name": "Ben Elsen",
-    "url": "http://benelsen.com"
+    "email": "mail@benelsen.com",
+    "url": "https://benelsen.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/benelsen/spacetrack.git"
   },
   "dependencies": {
-    "request": "~2.33.0",
-    "q": "~1.0.0",
-    "lodash": "~2.4.1"
+    "es6-promise": "^2.0.0",
+    "lodash": "^2.4.1",
+    "request": "^2.49.0"
   },
   "devDependencies": {
-    "smash": "latest",
-    "uglify-js": "latest",
-    "jshint": "latest",
-    "mocha": "latest",
-    "complexity-report": "latest",
-    "should": "latest"
+    "tape": "^3.0.3"
   },
   "main": "src/spacetrack",
   "scripts": {
-    "test": "make jshint complex test"
+    "test": "node_modules/.bin/tape test/**/*"
   },
   "license": "MIT"
 }

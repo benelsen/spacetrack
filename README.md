@@ -24,6 +24,7 @@ var spacetrack = new SpaceTrack({
 ```javascript
 var promise = spacetrack.get(options);
 ```
+
 ```javascript
 options = {
   controller: 'basicspacedata', // defaults to 'basicspacedata'
@@ -87,47 +88,34 @@ spacetrack.get({
       'MEAN_MOTION'
     ],
     orderby: [
-      '-EPOCH'
+      'ORDINAL'
     ],
-    limit: 3
+    limit: 2
   })
   .then(function(result) {
     console.log( util.inspect(result, {colors: true, depth: null}) );
   })
-  .fail(function(err) {
+  .catch(function(err) {
     console.error(err);
   });
 
 ```
 Result:
-```json
+```javascript
 [ { name: 'ISS (ZARYA)',
-    epoch: Sat Nov 23 2013 16:06:07 GMT+0100 (CET),
-    eccentricity: '0.0001112',
-    inclination: '51.651',
-    rightAscension: '38.3864',
-    argPericenter: '104.0257',
-    meanAnomaly: '60.222',
-    meanMotion: '15.50472132' },
-  { name: 'ISS (ZARYA)',
-    epoch: Sat Nov 23 2013 11:29:32 GMT+0100 (CET),
-    eccentricity: '0.0001136',
-    inclination: '51.6509',
-    rightAscension: '39.3377',
-    argPericenter: '107.1644',
-    meanAnomaly: '64.2293',
-    meanMotion: '15.50464898' },
-  { name: 'ISS (ZARYA)',
-    epoch: Sat Nov 23 2013 06:32:52 GMT+0100 (CET),
-    eccentricity: '0.0001151',
-    inclination: '51.6506',
-    rightAscension: '40.3579',
-    argPericenter: '106.2149',
-    meanAnomaly: '354.5482',
-    meanMotion: '15.50458843' } ]
+    epoch: '2014-11-30 06:04:20Z',
+    eccentricity: '0.0007406',
+    inclination: '51.6472',
+    rightAscension: '356.222',
+    argPericenter: '82.0627',
+    meanAnomaly: '354.8734',
+    meanMotion: '15.5163917' },
+  { name: 'NAVSTAR 68 (USA 242)',
+    epoch: '2014-11-29 04:46:55Z',
+    eccentricity: '0.0015209',
+    inclination: '55.3145',
+    rightAscension: '77.407',
+    argPericenter: '8.8422',
+    meanAnomaly: '351.1853',
+    meanMotion: '2.00562708' } ]
 ```
-
-## Tests
-Yep.
-
-[![Build Status](https://travis-ci.org/benelsen/spacetrack.png?branch=develop)](https://travis-ci.org/benelsen/spacetrack)

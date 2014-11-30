@@ -1,20 +1,13 @@
-/*global describe, it */
-'use strict';
-
-var should = require('should');
-
-// Test
+var test = require('tape');
 
 var SpaceTrack = require('./../src/spacetrack');
 
-describe('SpaceTrack', function() {
+test('SpaceTrack', function(t) {
 
-  it('should exist', function() {
-    should.exist(SpaceTrack);
-  });
+  t.plan(2);
 
-  it('should be a function', function() {
-    SpaceTrack.should.be.a.instanceOf(Function);
-  });
+  t.ok(SpaceTrack);
+
+  t.ok(SpaceTrack instanceof Function);
 
 });
