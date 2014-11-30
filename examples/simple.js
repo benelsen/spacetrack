@@ -1,37 +1,33 @@
-var SpaceTrack = require('./../src/spacetrack'),
-    util = require('util');
+var spacetrack = require('../');
+var util = require('util');
 
-var spacetrack = new SpaceTrack({
+spacetrack.login({
   username: 'username',
   password: 'password'
 });
 
 spacetrack.get({
-    type: 'tle_latest',
-    query: [
-      {field:'NORAD_CAT_ID', condition: '25544,39166'}
-    ],
-    predicates: [
-      'OBJECT_NAME',
-      'EPOCH',
-      'INCLINATION',
-      'ARG_OF_PERICENTER',
-      'RA_OF_ASC_NODE',
-      'MEAN_ANOMALY',
-      'ECCENTRICITY',
-      'MEAN_MOTION'
-    ],
-    orderby: [
-      'ORDINAL'
-    ],
-    limit: 2
-  })
-  .then(function(result) {
-    console.log( util.inspect(result, {colors: true, depth: null}) );
-  })
-  .catch(function(err) {
-    console.error(err.stack);
-  });
+  type: 'tle_latest',
+  query: [
+    {field:'NORAD_CAT_ID', condition: '25544,39166'},
+    {field:'ORDINAL', condition: '1'},
+  ],
+  predicates: [
+    'OBJECT_NAME',
+    'EPOCH',
+    'INCLINATION',
+    'ARG_OF_PERICENTER',
+    'RA_OF_ASC_NODE',
+    'MEAN_ANOMALY',
+    'ECCENTRICITY',
+    'MEAN_MOTION'
+  ]
+})
+.then(function(result) {
+  console.log( util.inspect(result, {colors: true, depth: null}) );
+}, function(err) {
+  console.error('error', err.stack);
+});
 
 /*
 [ { name: 'ISS (ZARYA)',

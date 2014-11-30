@@ -7,12 +7,11 @@ You need login credentials for Space-Track. Available upon request and approval 
 ## API
   Consider the API to be unstable at this time. Methods will change without notice and backward compatibility during this phase.
 
-### Setup
-  Require the library and create a new instance with your credentials.
-  This will automatically try to do a login and store the needed cookies in a jar.
+### Login
+
 ```javascript
-var SpaceTrack = require('spacetrack');
-var spacetrack = new SpaceTrack({
+var spacetrack = require('spacetrack');
+spacetrack.login({
   username: 'yourusername',
   password: 'yourpassword'
 });
@@ -64,58 +63,54 @@ options = {
   This is a basic example to get the first three sets of the selected fields (predicates) of satellites 25544 (ISS) and 39166 (USA 242) ordered ascending by `ORDINAL` and descending by `NORAD_CAT_ID`.
 
 ```javascript
-var SpaceTrack = require('spacetrack'),
-    util = require('util');
+var spacetrack = require('spacetrack');
+var util = require('util');
 
-var spacetrack = new SpaceTrack({
-  username: 'yourusername',
-  password: 'yourpassword'
+spacetrack.login({
+  username: 'username',
+  password: 'password'
 });
 
 spacetrack.get({
-    type: 'tle_latest',
-    query: [
-      {field:'NORAD_CAT_ID', condition: '25544,39166'}
-    ],
-    predicates: [
-      'OBJECT_NAME',
-      'EPOCH',
-      'INCLINATION',
-      'ARG_OF_PERICENTER',
-      'RA_OF_ASC_NODE',
-      'MEAN_ANOMALY',
-      'ECCENTRICITY',
-      'MEAN_MOTION'
-    ],
-    orderby: [
-      'ORDINAL'
-    ],
-    limit: 2
-  })
-  .then(function(result) {
-    console.log( util.inspect(result, {colors: true, depth: null}) );
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+  type: 'tle_latest',
+  query: [
+    {field:'NORAD_CAT_ID', condition: '25544,39166'},
+    {field:'ORDINAL', condition: '1'},
+  ],
+  predicates: [
+    'OBJECT_NAME',
+    'EPOCH',
+    'INCLINATION',
+    'ARG_OF_PERICENTER',
+    'RA_OF_ASC_NODE',
+    'MEAN_ANOMALY',
+    'ECCENTRICITY',
+    'MEAN_MOTION'
+  ]
+})
+.then(function(result) {
+  console.log( util.inspect(result, {colors: true, depth: null}) );
+}, function(err) {
+  console.error('error', err.stack);
+});
 
 ```
 Result:
 ```javascript
 [ { name: 'ISS (ZARYA)',
-    epoch: '2014-11-30 06:04:20Z',
-    eccentricity: '0.0007406',
-    inclination: '51.6472',
-    rightAscension: '356.222',
-    argPericenter: '82.0627',
-    meanAnomaly: '354.8734',
-    meanMotion: '15.5163917' },
+    epoch: '2014-11-30 14:05:20Z',
+    eccentricity: '0.0007404',
+    inclination: '51.6481',
+    rightAscension: '354.5641',
+    argPericenter: '83.5665',
+    meanAnomaly: '60.4119',
+    meanMotion: '15.51651628' },
   { name: 'NAVSTAR 68 (USA 242)',
-    epoch: '2014-11-29 04:46:55Z',
-    eccentricity: '0.0015209',
-    inclination: '55.3145',
-    rightAscension: '77.407',
-    argPericenter: '8.8422',
-    meanAnomaly: '351.1853',
-    meanMotion: '2.00562708' } ]
+    epoch: '2014-11-30 04:42:49Z',
+    eccentricity: '0.001521',
+    inclination: '55.3151',
+    rightAscension: '77.3669',
+    argPericenter: '9.0755',
+    meanAnomaly: '350.9483',
+    meanMotion: '2.00562695' } ]
 ```
