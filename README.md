@@ -60,7 +60,7 @@ options = {
 
 ## Example
 
-  This is a basic example to get the first three sets of the selected fields (predicates) of satellites 25544 (ISS) and 39166 (USA 242) ordered ascending by `ORDINAL` and descending by `NORAD_CAT_ID`.
+  This is a basic example to get the latest ephemerides of satellites 25544 (ISS) and 39166 (USA 242).
 
 ```javascript
 var spacetrack = require('spacetrack');
