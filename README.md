@@ -7,7 +7,8 @@ Simple node.js library for the [Space-Track.org](https://www.space-track.org/) R
 You need login credentials for Space-Track. Available upon request and approval [here](https://www.space-track.org/auth/create_user).
 
 ## API
-  Consider the API to be unstable at this time. Methods will change without notice and backward compatibility during this phase.
+
+This project follows [semver](http://semver.org/) principles.
 
 ### Login
 
