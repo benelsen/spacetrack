@@ -1,32 +1,32 @@
-var test = require('tape');
+import test from 'tape'
 
 // Credentials
-var username, password;
+var username, password
 if ( process.env.ST_USER && process.env.ST_PASS ) {
 
-  username = process.env.ST_USER;
-  password = process.env.ST_PASS;
+  username = process.env.ST_USER
+  password = process.env.ST_PASS
 
 } else {
-  throw new Error('no login credentials');
+  throw new Error('no login credentials')
 }
 
 // Tests
-var spacetrack = require('../');
+import spacetrack from '../'
 
 test('SpaceTrack', function(t) {
 
-  t.plan(2);
+  t.plan(2)
 
-  t.ok(spacetrack);
+  t.ok(spacetrack)
 
-  t.ok(spacetrack instanceof Object);
+  t.ok(spacetrack instanceof Object)
 
-});
+})
 
 test('SpaceTrack#login', function (t) {
 
-  t.plan(2);
+  t.plan(2)
 
   spacetrack.login({
     username: username,
@@ -34,19 +34,19 @@ test('SpaceTrack#login', function (t) {
   })
   .then(function (result) {
 
-    t.ok(result);
-    t.ok(spacetrack.loggedIn);
+    t.ok(result)
+    t.ok(spacetrack.loggedIn)
 
-  });
+  })
 
-});
+})
 
 test('SpaceTrack#get', function(t) {
 
-  t.plan(2);
+  t.plan(2)
 
-  t.ok(spacetrack.get);
+  t.ok(spacetrack.get)
 
-  t.ok(spacetrack.get instanceof Function);
+  t.ok(spacetrack.get instanceof Function)
 
-});
+})
