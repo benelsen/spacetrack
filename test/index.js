@@ -12,7 +12,7 @@ if ( process.env.ST_USER && process.env.ST_PASS ) {
 }
 
 // Tests
-import spacetrack from '../'
+import spacetrack from '../lib/'
 
 test('SpaceTrack', function(t) {
 
