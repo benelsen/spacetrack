@@ -8,10 +8,10 @@ spacetrack.login({
 
 spacetrack.get({
   type: 'tle_latest',
-  query: [
-    {field: 'NORAD_CAT_ID', condition: '25544,39166'},
-    {field: 'ORDINAL', condition: '1'},
-  ],
+  query: {
+    NORAD_CAT_ID: [25544, 39166],
+    ORDINAL: 1,
+  },
   predicates: [
     'OBJECT_NAME',
     'EPOCH',

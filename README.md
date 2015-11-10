@@ -45,9 +45,9 @@ const promise = spacetrack.get({
   // tle, tle_latest, tle_publish, omm, boxscore, satcat,
   // launch_site, satcat_change, satcat_debut, decay, tip, csm
 
-  query: [  // optional, but highly recommended
-    {field: 'NORAD_CAT_ID', condition: '25544'} // e.g. (see the API documentation)
-  ],
+  query: {  // optional, but highly recommended
+    NORAD_CAT_ID: 25544 // e.g. (see the API documentation)
+  },
 
   predicates: [  // optional
     'NORAD_CAT_ID', 'ORDINAL'
@@ -86,10 +86,10 @@ spacetrack.login({
 
 spacetrack.get({
   type: 'tle_latest',
-  query: [
-    {field: 'NORAD_CAT_ID', condition: '25544,39166'},
-    {field: 'ORDINAL', condition: '1'},
-  ],
+  query: {
+    NORAD_CAT_ID: [25544, 39166],
+    ORDINAL: 1,
+  },
   predicates: [
     'OBJECT_NAME',
     'EPOCH',
