@@ -1,5 +1,5 @@
-import spacetrack from '../';
-import util from 'util';
+const spacetrack = require('../').spacetrack
+const util = require('util')
 
 spacetrack.login({
   username: 'username',
@@ -23,7 +23,7 @@ spacetrack.get({
     'MEAN_MOTION'
   ]
 })
-.then( result => {
+.then(function(result) {
   console.log( util.inspect(result, {colors: true, depth: null}) )
 })
 
