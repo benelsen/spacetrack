@@ -45,7 +45,7 @@ const promise = spacetrack.get({
   // tle, tle_latest, tle_publish, omm, boxscore, satcat,
   // launch_site, satcat_change, satcat_debut, decay, tip, csm
 
-  query: {  // optional, but highly recommended
+  conditions: {  // optional, but highly recommended
     NORAD_CAT_ID: 25544 // e.g. (see the API documentation)
   },
 
@@ -62,8 +62,8 @@ const promise = spacetrack.get({
     '-NORAD_CAT_ID' // descending by NORAD_CAT_ID
   ],
 
-  limit: 100, // optional, but recommended
-  offset: 10, // optional (needs limit to be set, otherwise limit defaults to 100)
+  limit: 100, // optional, defaults to 100
+  offset: 10, // optional, defaults to 0
 
   distinct: false // optional (this option causes some hiccups)
 })
@@ -86,7 +86,7 @@ spacetrack.login({
 
 spacetrack.get({
   type: 'tle_latest',
-  query: {
+  conditions: {
     NORAD_CAT_ID: [25544, 39166],
     ORDINAL: 1,
   },
@@ -109,19 +109,19 @@ spacetrack.get({
 Result:
 ```javascript
 [ { name: 'ISS (ZARYA)',
-    epoch: '2015-11-10 18:22:05',
-    inclination: 51.6444,
-    arg_pericenter: 124.673,
-    right_ascension: 72.5265,
-    mean_anomaly: 25.1002,
-    eccentricity: 0.0006657,
-    mean_motion: 15.54961234 },
+    epoch: '2015-11-11T12:29:47.405184Z',
+    inclination: 51.6449,
+    argument_of_periapsis: 129.5613,
+    right_ascension: 68.7539,
+    mean_anomaly: 291.4123,
+    eccentricity: 0.0006638,
+    mean_motion: 15.5498395 },
   { name: 'NAVSTAR 68 (USA 242)',
-    epoch: '2015-11-09 17:15:32',
-    inclination: 55.5321,
-    arg_pericenter: 11.6622,
-    right_ascension: 63.5546,
-    mean_anomaly: 348.3891,
-    eccentricity: 0.0026815,
-    mean_motion: 2.00559928 } ]
+    epoch: '2015-11-11T05:09:27.121536Z',
+    inclination: 55.533,
+    argument_of_periapsis: 11.6071,
+    right_ascension: 63.4948,
+    mean_anomaly: 348.4469,
+    eccentricity: 0.0026844,
+    mean_motion: 2.005599 } ]
 ```
