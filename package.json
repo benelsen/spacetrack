@@ -23,6 +23,7 @@
     "prepublish": "npm run lint && npm run test && npm run build"
   },
   "dependencies": {
+    "joi": "^7.0.0",
     "ramda": "^0.18.0",
     "request": "^2.65.0"
   },
