@@ -1,5 +1,8 @@
 # Space Track
 
+[![npm version](https://badge.fury.io/js/spacetrack.svg)](https://badge.fury.io/js/spacetrack)
+[![Build Status](https://travis-ci.org/benelsen/spacetrack.svg?branch=v3)](https://travis-ci.org/benelsen/spacetrack)
+
 Simple node.js library for the [Space-Track.org](https://www.space-track.org/) REST API.
 
 You need login credentials for Space-Track. Available upon request and approval [here](https://www.space-track.org/auth/create_user).
