@@ -30,7 +30,7 @@ test('SpaceTrack#login', function (t) {
 
   spacetrack.login({
     username: username,
-    password: password
+    password: password,
   })
   .then(function (result) {
 
