@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/spacetrack.svg)](https://badge.fury.io/js/spacetrack)
 [![Build Status](https://travis-ci.org/benelsen/spacetrack.svg?branch=v3)](https://travis-ci.org/benelsen/spacetrack)
+[![Dependency Status](https://david-dm.org/benelsen/spacetrack.svg?branch=v3)](https://david-dm.org/benelsen/spacetrack)
+[![devDependency Status](https://david-dm.org/benelsen/spacetrack/dev-status.svg)](https://david-dm.org/benelsen/spacetrack#info=devDependencies)
 
 Simple node.js library for the [Space-Track.org](https://www.space-track.org/) REST API.
 
