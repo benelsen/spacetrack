@@ -19,8 +19,8 @@
     "build": "babel -d lib5/ lib/",
     "lint": "eslint lib/ test/",
     "test": "babel-tape-runner test/**/*",
-    "version": "npm run lint && npm run test && npm run build",
-    "prepublish": "npm run lint && npm run test && npm run build"
+    "version": "npm run test && npm run build",
+    "prepublish": "npm run test && npm run build"
   },
   "dependencies": {
     "joi": "^7.0.0",
