@@ -62,7 +62,7 @@ const promise = spacetrack.get({
     'Navigation'
   ],
 
-  orderby: [  // optional
+  orderBy: [  // optional
     '+ORDINAL', // ascending by ORDINAL
     '-NORAD_CAT_ID' // descending by NORAD_CAT_ID
   ],

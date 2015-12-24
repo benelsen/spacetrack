@@ -19,7 +19,6 @@ test('SpaceTrack', function(t) {
   t.plan(2)
 
   t.ok(spacetrack)
-
   t.ok(spacetrack instanceof Object)
 
 })
@@ -43,10 +42,31 @@ test('SpaceTrack#login', function (t) {
 
 test('SpaceTrack#get', function(t) {
 
-  t.plan(2)
+  t.plan(3)
 
   t.ok(spacetrack.get)
-
   t.ok(spacetrack.get instanceof Function)
+
+  spacetrack.get({
+    controller: 'basicspacedata',
+    action: 'query',
+    type: 'tle_latest',
+    conditions: {
+      NORAD_CAT_ID: 25544,
+    },
+    predicates: [
+      'NORAD_CAT_ID', 'ORDINAL',
+    ],
+    orderBy: [
+      '+ORDINAL',
+      '-NORAD_CAT_ID',
+    ],
+  })
+  .then(function (result) {
+    t.ok(result instanceof Array)
+  })
+  .catch( err => {
+    throw err
+  })
 
 })
