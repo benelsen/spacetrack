@@ -1,30 +1,25 @@
 import test from 'tape'
 
-// Credentials
-var username, password
-if ( process.env.ST_USER && process.env.ST_PASS ) {
+import {assocPath} from 'ramda'
 
+// Credentials
+let username, password
+if ( process.env.ST_USER && process.env.ST_PASS ) {
   username = process.env.ST_USER
   password = process.env.ST_PASS
-
 } else {
   throw new Error('no login credentials')
 }
 
 // Tests
-import spacetrack from '../lib/'
+import spacetrack, {SpaceTrack} from '../lib/'
 
 test('SpaceTrack', function(t) {
-
-  t.plan(2)
-
-  t.ok(spacetrack)
-  t.ok(spacetrack instanceof Object)
-
+  t.plan(1)
+  t.ok(spacetrack instanceof SpaceTrack)
 })
 
 test('SpaceTrack#login', function (t) {
-
   t.plan(2)
 
   spacetrack.login({
@@ -37,17 +32,15 @@ test('SpaceTrack#login', function (t) {
     t.ok(spacetrack.loggedIn)
 
   })
-
 })
 
 test('SpaceTrack#get', function(t) {
 
-  t.plan(3)
+  t.plan(4)
 
-  t.ok(spacetrack.get)
   t.ok(spacetrack.get instanceof Function)
 
-  spacetrack.get({
+  const testQuery = {
     controller: 'basicspacedata',
     action: 'query',
     type: 'tle_latest',
@@ -61,9 +54,20 @@ test('SpaceTrack#get', function(t) {
       '+ORDINAL',
       '-NORAD_CAT_ID',
     ],
-  })
+  }
+
+  spacetrack.get(testQuery)
   .then(function (result) {
     t.ok(result instanceof Array)
+  })
+  .catch( err => {
+    throw err
+  })
+
+  spacetrack.get(assocPath(['conditions', 'EPOCH'], '1990-01-01 00:00:00.000', testQuery))
+  .then(function (result) {
+    t.ok(result instanceof Array)
+    t.equal(result.length, 0)
   })
   .catch( err => {
     throw err
