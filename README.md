@@ -1,5 +1,7 @@
 # Space Track
 
+[![Build Status](https://travis-ci.org/benelsen/spacetrack.svg?branch=master)](https://travis-ci.org/benelsen/spacetrack)
+
 Simple node.js library for the [Space-Track.org](https://www.space-track.org/) REST API.
 
 You need login credentials for Space-Track. Available upon request and approval [here](https://www.space-track.org/auth/create_user).
@@ -20,7 +22,7 @@ spacetrack.login({
 
 ### Request
   This will build a request from the provided options and return a promise.
-  
+
 ```javascript
 var promise = spacetrack.get(options);
 ```
@@ -29,31 +31,31 @@ var promise = spacetrack.get(options);
 options = {
   controller: 'basicspacedata', // defaults to 'basicspacedata'
   action: 'query', // defaults to 'query'
-  
+
   type: 'tle_latest', // required, must be one of the following:
-  // tle, tle_latest, tle_publish, omm, boxscore, satcat, 
+  // tle, tle_latest, tle_publish, omm, boxscore, satcat,
   // launch_site, satcat_change, satcat_debut, decay, tip, csm
-  
+
   query: [  // optional, but highly recommended
     {field: 'NORAD_CAT_ID', condition: '25544'} // e.g. (see the API documentation)
   ],
-  
+
   predicates: [  // optional
     'NORAD_CAT_ID', 'ORDINAL'
   ],
-  
+
   favorites: [  // optional
     'Navigation'
   ],
-  
+
   orderby: [  // optional
     '+ORDINAL', // ascending by ORDINAL
     '-NORAD_CAT_ID' // descending by NORAD_CAT_ID
   ],
-  
+
   limit: 100, // optional, but recommended
   offset: 10, // optional (needs limit to be set, otherwise limit defaults to 100)
-  
+
   distinct: false // optional (this option causes some hiccups)
 }
 ```
