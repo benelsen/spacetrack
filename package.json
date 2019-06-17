@@ -1,6 +1,6 @@
 {
   "name": "spacetrack",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "node library for the Space-Track.org REST API.",
   "keywords": [
     "spacetrack",
